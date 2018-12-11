@@ -9,8 +9,8 @@ import java.util.List;
 @Path("/patientservice")
 public interface PatientService {
 
+    @Path(value="/patients")
     @GET
-    @Path("/patients")
     List<Patient> getPatients();
 
     @GET
@@ -19,13 +19,13 @@ public interface PatientService {
 
     @POST
     @Path("/patients")
-    Response createPatient();
+    Response createPatient(Patient patient);
 
     @PUT
     @Path("/patients")
-    Response updatePatient();
+    Response updatePatient(Patient patient);
 
     @DELETE
-    @Path("/patients")
-    Response deletePatient();
+    @Path("/patients/{id}")
+    Response deletePatient(@PathParam("id") Long id);
 }

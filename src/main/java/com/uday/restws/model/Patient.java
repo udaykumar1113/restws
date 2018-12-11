@@ -2,7 +2,7 @@ package com.uday.restws.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement
+@XmlRootElement(name = "Patient")
 public class Patient {
     private Long id;
     private String name;
@@ -22,4 +22,13 @@ public class Patient {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "Patient{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
+
