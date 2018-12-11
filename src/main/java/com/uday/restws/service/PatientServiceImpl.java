@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Service
+@Service("patientService")
 public class PatientServiceImpl implements PatientService {
 
     private long counter=256;
@@ -50,6 +50,7 @@ public class PatientServiceImpl implements PatientService {
     public Response updatePatient(Patient patient) {
         Patient currentPatient=patientMap.get(patient.getId());
         if(currentPatient==null){
+            patientMap.remove(patient.getId());
             patientMap.put(patient.getId(),patient);
             return Response.ok().build();
         }

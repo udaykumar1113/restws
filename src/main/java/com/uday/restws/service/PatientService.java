@@ -7,6 +7,8 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/patientservice")
+@Produces("application/xml,application/json")
+@Consumes("application/xml,application/json")
 public interface PatientService {
 
     @Path(value="/patients")
