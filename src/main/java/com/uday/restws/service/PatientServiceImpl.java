@@ -1,5 +1,6 @@
 package com.uday.restws.service;
 
+import com.uday.restws.exception.NoPatientException;
 import com.uday.restws.model.Patient;
 import org.springframework.stereotype.Service;
 
@@ -64,13 +65,10 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public Response deletePatient(Long id) {
-        //System.out.println("The patient is: "+patient+" PatientMap "+patientMap);
-        Patient currentPatient=patientMap.get(id);
-        System.out.println("Current Patient is: "+currentPatient.getId());
-        if(currentPatient!=null){
+        if(patientMap.get(id)!=null){
             patientMap.remove(id);
             return Response.ok().build();
         }
-        return Response.notModified().build();
+        throw new NoPatientException();
     }
 }
