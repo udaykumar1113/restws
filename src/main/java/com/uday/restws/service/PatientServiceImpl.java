@@ -3,6 +3,7 @@ package com.uday.restws.service;
 import com.uday.restws.model.Patient;
 import org.springframework.stereotype.Service;
 
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,6 +37,10 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public Patient getPatient(Long id) {
 
+        Patient currentPatient=patientMap.get(id);
+        if(currentPatient==null){
+            throw new WebApplicationException(Response.status(Response.Status.NOT_FOUND).build());
+        }
         return patientMap.get(id);
     }
 
