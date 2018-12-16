@@ -21,7 +21,7 @@ public interface PatientService {
 
     @POST
     @Path("/patients")
-    Response createPatient(Patient patient);
+    Patient createPatient(Patient patient);
 
     @PUT
     @Path("/patients")

@@ -46,10 +46,11 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public Response createPatient(Patient patient) {
+    public Patient createPatient(Patient patient) {
         patient.setId(counter++);
         patientMap.put(counter,patient);
-        return Response.ok().build();
+        //return Response.ok().build();
+        return patientMap.get(counter);
     }
 
     @Override
